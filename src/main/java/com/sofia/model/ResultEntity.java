@@ -1,4 +1,4 @@
-package app.dao;
+package com.sofia.model;
 
 public class ResultEntity {
     double result;
