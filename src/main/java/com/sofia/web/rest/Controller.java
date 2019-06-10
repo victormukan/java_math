@@ -1,7 +1,9 @@
 package com.sofia.web.rest;
 
+import com.google.gson.GsonBuilder;
 import com.sofia.bussinessobj.HistoryBO;
 import com.sofia.bussinessobj.MathOperationBO;
+import com.sofia.dao.GsonLocalDateTimeConverter;
 import com.sofia.model.ResultEntity;
 import com.google.gson.Gson;
 import com.sofia.model.MathOperation;
@@ -10,12 +12,18 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
+
 @RestController
 public class Controller {
-    private static final Gson converter = new Gson();
+    private static final Gson converter = new GsonBuilder()
+				.setPrettyPrinting()
+				.serializeNulls()
+				.registerTypeAdapter(LocalDateTime .class, new GsonLocalDateTimeConverter())
+                .create();
 
-    @GetMapping(path="/history")
-    public @ResponseBody ResponseEntity<String> hello() {
+    @GetMapping(path="/history", produces=MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody ResponseEntity<String> getHistory(@RequestParam(required = false) String lastTime) {
         return new ResponseEntity<>(converter.toJson(HistoryBO.getHistory()), HttpStatus.OK);
     }
 
