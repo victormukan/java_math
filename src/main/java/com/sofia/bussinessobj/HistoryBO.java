@@ -2,9 +2,11 @@ package com.sofia.bussinessobj;
 
 import com.sofia.model.HistoryRecord;
 import com.sofia.model.MathOperation;
+import com.sofia.util.HistoryDateParser;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class HistoryBO {
     private static List<HistoryRecord> requestsHistory = new ArrayList<>();
@@ -15,5 +17,11 @@ public class HistoryBO {
 
     public static List<HistoryRecord> getHistory() {
         return requestsHistory;
+    }
+
+    public static List<HistoryRecord> getHistoryByDate(String limit) {
+        return requestsHistory.stream()
+                .filter(i -> i.getRequestTime().isAfter(HistoryDateParser.getMinSatisfyingDate(limit)))
+                .collect(Collectors.toList());
     }
 }
