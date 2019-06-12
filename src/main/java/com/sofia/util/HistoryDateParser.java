@@ -16,6 +16,9 @@ public class HistoryDateParser {
             case "s":
                 minSatisfyingDate = now.minusSeconds(periodValue);
                 break;
+            case "m":
+                minSatisfyingDate = now.minusMinutes(periodValue);
+                break;
             case "h":
                 minSatisfyingDate = now.minusHours(periodValue);
                 break;
@@ -24,9 +27,6 @@ public class HistoryDateParser {
                 break;
             case "w":
                 minSatisfyingDate = now.minusWeeks(periodValue);
-                break;
-            case "m":
-                minSatisfyingDate = now.minusMonths(periodValue);
                 break;
         }
         return minSatisfyingDate;
