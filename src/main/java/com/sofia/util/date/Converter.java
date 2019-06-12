@@ -1,7 +1,8 @@
-package com.sofia.util;
+package com.sofia.util.date;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.sofia.util.date.GsonLocalDateTimeConverter;
 
 import java.time.LocalDateTime;
 

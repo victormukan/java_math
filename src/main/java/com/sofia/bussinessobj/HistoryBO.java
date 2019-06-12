@@ -4,8 +4,8 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.sofia.model.HistoryRecord;
 import com.sofia.model.MathOperation;
-import com.sofia.util.Converter;
-import com.sofia.util.HistoryDateParser;
+import com.sofia.util.date.Converter;
+import com.sofia.util.date.HistoryDateParser;
 
 import java.io.FileWriter;
 import java.io.IOException;

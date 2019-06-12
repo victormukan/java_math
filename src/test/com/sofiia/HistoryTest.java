@@ -4,9 +4,8 @@ import com.google.gson.Gson;
 import com.sofia.Main;
 import com.sofia.bussinessobj.HistoryBO;
 import com.sofia.model.MathOperation;
-import com.sofia.model.MathOperationResult;
 import com.sofia.model.OperationType;
-import com.sofia.util.Converter;
+import com.sofia.util.date.Converter;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,7 +23,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 
 @RunWith(SpringRunner.class)
-@ContextConfiguration(classes=Main.class)
+@ContextConfiguration(classes = Main.class)
 @WebMvcTest
 public class HistoryTest {
 
@@ -34,7 +33,7 @@ public class HistoryTest {
     private HistoryBO history;
 
     @Before
-    public void sendRequests() throws Exception{
+    public void sendRequests() throws Exception {
         MathOperation operation = new MathOperation(1.2, 4, OperationType.ADD);
         double result = 5.2;
 
@@ -50,7 +49,7 @@ public class HistoryTest {
     }
 
     @Test
-    public void getHistory() throws Exception{
+    public void getHistory() throws Exception {
         Gson converter = Converter.getConverter();
 
         this.mockMvc.perform(get("/history"))

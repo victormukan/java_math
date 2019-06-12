@@ -5,7 +5,7 @@ import com.sofia.Main;
 import com.sofia.model.MathOperation;
 import com.sofia.model.MathOperationResult;
 import com.sofia.model.OperationType;
-import com.sofia.util.Converter;
+import com.sofia.util.date.Converter;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +39,6 @@ public class MathOperationsTest {
                 .content(converter.toJson(operation)))
                 .andExpect(status().isOk())
                 .andExpect(content().json(converter.toJson(result)));
-
     }
 
 }

@@ -1,11 +1,9 @@
 package com.sofia.web.rest;
 
-import com.google.gson.GsonBuilder;
 import com.sofia.bussinessobj.HistoryBO;
 import com.sofia.bussinessobj.MathOperationBO;
-import com.sofia.util.Converter;
-import com.sofia.util.ErrorResponse;
-import com.sofia.util.GsonLocalDateTimeConverter;
+import com.sofia.util.date.Converter;
+import com.sofia.util.exception.ErrorResponse;
 import com.sofia.model.ResultEntity;
 import com.google.gson.Gson;
 import com.sofia.model.MathOperation;
@@ -13,8 +11,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.time.LocalDateTime;
 
 @RestController
 public class Controller {

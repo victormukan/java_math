@@ -1,4 +1,4 @@
-package com.sofia.util;
+package com.sofia.util.date;
 
 import java.lang.reflect.Type;
 import java.time.LocalDateTime;

@@ -1,4 +1,4 @@
-package com.sofia.util;
+package com.sofia.util.date;
 
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
