@@ -27,6 +27,7 @@ public class Controller {
             try {
                 return new ResponseEntity<>(converter.toJson(history.getHistoryByDate(limit)), HttpStatus.OK);
             } catch (Exception e) {
+                e.printStackTrace();
                 return new ResponseEntity<>(converter.toJson(new ErrorResponse("Error in limit param")), HttpStatus.INTERNAL_SERVER_ERROR);
             }
         } else {
