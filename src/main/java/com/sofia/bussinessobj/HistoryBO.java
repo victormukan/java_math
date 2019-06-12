@@ -9,17 +9,17 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class HistoryBO {
-    private static List<HistoryRecord> requestsHistory = new ArrayList<>();
+    private List<HistoryRecord> requestsHistory = new ArrayList<>();
 
-    public static void addRecord(MathOperation operation, Double result) {
+    public void addRecord(MathOperation operation, Double result) {
         requestsHistory.add(new HistoryRecord(operation, result));
     }
 
-    public static List<HistoryRecord> getHistory() {
+    public List<HistoryRecord> getHistory() {
         return requestsHistory;
     }
 
-    public static List<HistoryRecord> getHistoryByDate(String limit) {
+    public List<HistoryRecord> getHistoryByDate(String limit) {
         return requestsHistory.stream()
                 .filter(i -> i.getRequestTime().isAfter(HistoryDateParser.getMinSatisfyingDate(limit)))
                 .collect(Collectors.toList());
