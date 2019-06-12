@@ -9,7 +9,7 @@
         <import resource="classpath:META-INF/cxf/cxf.xml" />
 
         <jaxws:endpoint
-                id="librarySOAP"
+                id="calculatorSOAP"
                 implementor="com.sofia.web.soap.CalculatorServiceImp"
                 address="/calculatorSOAP" />
           
