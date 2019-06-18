@@ -20,12 +20,13 @@ import java.util.stream.Collectors;
 public class HistoryBO {
     private List<HistoryRecord> requestsHistory = new ArrayList<>();
     private Gson converter = Converter.getConverter();
+    private String historyFilePath = System.getProperty("user.dir") + "/src/main/resources/history.json";
 
     public HistoryBO() {
         try {
-            String text = new String(Files.readAllBytes(
-                    Paths.get(System.getProperty("user.dir") +
-                    "\\src\\main\\resources\\history.json")),
+            String a = System.getProperty("user.dir");
+            System.out.println(System.getProperty("user.dir"));
+            String text = new String(Files.readAllBytes(Paths.get(this.historyFilePath)),
                     StandardCharsets.UTF_8);
 
             Type parseType = new TypeToken<ArrayList<HistoryRecord>>(){}.getType();
@@ -42,8 +43,7 @@ public class HistoryBO {
     public void addRecord(MathOperation operation, Double result) {
         requestsHistory.add(new HistoryRecord(operation, result));
 
-        try (FileWriter writer = new FileWriter(System.getProperty("user.dir") +
-                "\\src\\main\\resources\\history.json")){
+        try (FileWriter writer = new FileWriter(this.historyFilePath)){
             String data = converter.toJson(requestsHistory);
             writer.write(data);
         } catch (IOException e) {
