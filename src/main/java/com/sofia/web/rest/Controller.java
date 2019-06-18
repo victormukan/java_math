@@ -12,7 +12,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
+// @RestController
 public class Controller {
     private static final Gson converter = Converter.getConverter();
     HistoryBO history = new HistoryBO();
