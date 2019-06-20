@@ -1,9 +1,9 @@
 package com.sofia.web.soap;
 
-import com.sofia.bo.HistoryBO;
-import com.sofia.bo.MathOperationBO;
+import com.sofia.service.CalculatorService;
+import com.sofia.service.HistoryService;
 import com.sofia.entity.HistoryRecord;
-import com.sofia.model.MathOperation;
+import com.sofia.dto.MathOperation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,18 +11,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import javax.jws.WebService;
 import java.util.List;
 
-@WebService(endpointInterface = "com.sofia.web.soap.CalculatorService")
-public class CalculatorServiceImp implements CalculatorService{
-    private static Logger LOG = LogManager.getLogger(CalculatorServiceImp.class);
+@WebService(endpointInterface = "com.sofia.web.soap.CalculatorSoapService")
+public class CalculatorSoapServiceImp implements CalculatorSoapService {
+    private static Logger LOG = LogManager.getLogger(CalculatorSoapServiceImp.class);
 
     @Autowired
-    HistoryBO history;
+    private HistoryService history;
+
+    @Autowired
+    private CalculatorService calculator;
 
     @Override
     public Double doOperation(MathOperation mathOperation) {
         LOG.info("Doing operation!!!");
-        MathOperationBO operation = new MathOperationBO();
-        return operation.doOperation(mathOperation);
+        return calculator.doOperation(mathOperation);
     }
 
     @Override

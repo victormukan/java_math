@@ -1,6 +1,5 @@
 package com.sofia.entity;
 
-import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;

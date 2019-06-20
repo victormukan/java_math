@@ -1,13 +1,12 @@
-package com.sofia.bo;
+package com.sofia.service;
 
 import com.google.gson.Gson;
 import com.sofia.entity.HistoryRecord;
-import com.sofia.model.MathOperation;
+import com.sofia.dto.MathOperation;
 import com.sofia.repository.HistoryRecordRepository;
 import com.sofia.util.date.Converter;
 import com.sofia.util.date.HistoryDateParser;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 
@@ -15,19 +14,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class HistoryBO {
-
-
-    private HistoryRecordRepository historyRepository;
+public class HistoryService {
 
     @Autowired
-    public HistoryBO(HistoryRecordRepository historyRepository) {
-        this.historyRepository = historyRepository;
-    }
-
+    private HistoryRecordRepository historyRepository;
 
     private Gson converter = Converter.getConverter();
-
 
     public HistoryRecord addRecord(MathOperation operation, Double result) {
         return historyRepository.save(new HistoryRecord(
@@ -56,5 +48,8 @@ public class HistoryBO {
                 .collect(Collectors.toList());
     }
 
+    public long getHistorySize() {
+        return historyRepository.count();
+    }
 
 }
