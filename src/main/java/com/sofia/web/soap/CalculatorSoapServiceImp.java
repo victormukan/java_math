@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import javax.jws.WebService;
 import java.util.List;
 
-@WebService(endpointInterface = "com.sofia.web.soap.CalculatorService")
+@WebService(endpointInterface = "com.sofia.web.soap.CalculatorSoapService")
 public class CalculatorSoapServiceImp implements CalculatorSoapService {
     private static Logger LOG = LogManager.getLogger(CalculatorSoapServiceImp.class);
 

@@ -16,16 +16,10 @@ import java.util.stream.Collectors;
 @Service
 public class HistoryService {
 
+    @Autowired
     private HistoryRecordRepository historyRepository;
 
-    @Autowired
-    public HistoryService(HistoryRecordRepository historyRepository) {
-        this.historyRepository = historyRepository;
-    }
-
-
     private Gson converter = Converter.getConverter();
-
 
     public HistoryRecord addRecord(MathOperation operation, Double result) {
         return historyRepository.save(new HistoryRecord(
@@ -54,5 +48,8 @@ public class HistoryService {
                 .collect(Collectors.toList());
     }
 
+    public long getHistorySize() {
+        return historyRepository.count();
+    }
 
 }

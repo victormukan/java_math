@@ -28,7 +28,7 @@ public class Controller {
     private CalculatorService calculator;
 
 
-    @GetMapping(path="/historyService", produces=MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path="/history", produces=MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody ResponseEntity<String> getHistory(@RequestParam(required = false) String limit) {
         if (limit != null) {
             try {
@@ -43,7 +43,12 @@ public class Controller {
         }
     }
 
-    @GetMapping(path="/historyService/{id}", produces=MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path="/history/size", produces=MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody ResponseEntity<String> getSize() {
+        return new ResponseEntity<>(converter.toJson(historyService.getHistorySize()), HttpStatus.OK);
+    }
+
+    @GetMapping(path="/history/{id}", produces=MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody ResponseEntity<String> getHistoryRecordById(@PathVariable int id) {
         HistoryRecord result = historyService.getHistoryById(id);
         if (result != null) {
