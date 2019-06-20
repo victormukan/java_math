@@ -1,6 +1,6 @@
 package com.sofia.web.soap;
 
-import com.sofia.model.HistoryRecord;
+import com.sofia.entity.HistoryRecord;
 import com.sofia.model.MathOperation;
 
 import javax.jws.WebService;

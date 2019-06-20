@@ -2,7 +2,7 @@ package com.sofiia;
 
 import com.google.gson.Gson;
 import com.sofia.Main;
-import com.sofia.bussinessobj.HistoryBO;
+import com.sofia.bo.HistoryBO;
 import com.sofia.model.MathOperation;
 import com.sofia.model.OperationType;
 import com.sofia.util.date.Converter;

@@ -1,4 +1,4 @@
-package com.sofia.bussinessobj;
+package com.sofia.bo;
 
 import com.sofia.model.MathOperation;
 

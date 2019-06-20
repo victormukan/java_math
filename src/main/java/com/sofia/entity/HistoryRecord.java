@@ -1,15 +1,17 @@
 package com.sofia.entity;
 
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name="history")
 public class HistoryRecord {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
 
     @Column(name="firstNumber")
@@ -24,18 +26,18 @@ public class HistoryRecord {
     @Column(name="result")
     private double result;
 
+    @CreationTimestamp
     @Column(name="requestTime")
-    private String requestTime;
+    private LocalDateTime requestTime;
 
     public HistoryRecord() {
     }
 
-    public HistoryRecord(double firstNumber, double secondNumber, String mathOperation, double result, String requestTime) {
+    public HistoryRecord(double firstNumber, double secondNumber, String mathOperation, double result) {
         this.firstNumber = firstNumber;
         this.secondNumber = secondNumber;
         this.mathOperation = mathOperation;
         this.result = result;
-        this.requestTime = requestTime;
     }
 
     public int getId() {
@@ -78,11 +80,11 @@ public class HistoryRecord {
         this.result = result;
     }
 
-    public String getRequestTime() {
+    public LocalDateTime getRequestTime() {
         return requestTime;
     }
 
-    public void setRequestTime(String requestTime) {
+    public void setRequestTime(LocalDateTime requestTime) {
         this.requestTime = requestTime;
     }
 }

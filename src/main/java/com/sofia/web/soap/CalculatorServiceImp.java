@@ -1,11 +1,12 @@
 package com.sofia.web.soap;
 
-import com.sofia.bussinessobj.HistoryBO;
-import com.sofia.bussinessobj.MathOperationBO;
-import com.sofia.model.HistoryRecord;
+import com.sofia.bo.HistoryBO;
+import com.sofia.bo.MathOperationBO;
+import com.sofia.entity.HistoryRecord;
 import com.sofia.model.MathOperation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.jws.WebService;
 import java.util.List;
@@ -14,6 +15,8 @@ import java.util.List;
 public class CalculatorServiceImp implements CalculatorService{
     private static Logger LOG = LogManager.getLogger(CalculatorServiceImp.class);
 
+    @Autowired
+    HistoryBO history;
 
     @Override
     public Double doOperation(MathOperation mathOperation) {
@@ -25,14 +28,12 @@ public class CalculatorServiceImp implements CalculatorService{
     @Override
     public List<HistoryRecord> getHistory() {
         LOG.info("Getting ALL history");
-        HistoryBO allHistory = new HistoryBO();
-        return allHistory.getHistory();
+        return history.getHistory();
     }
 
     @Override
     public List<HistoryRecord> getHistoryByDate(String limit) {
         LOG.info("Getting specific history with limit " + limit);
-        HistoryBO specificHistory = new HistoryBO();
-        return specificHistory.getHistoryByDate(limit);
+        return history.getHistoryByDate(limit);
     }
 }
