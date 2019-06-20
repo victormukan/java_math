@@ -1,4 +1,4 @@
-package com.sofia.model;
+package com.sofia.dto;
 
 public class MathOperation {
     private double firstNumber;
