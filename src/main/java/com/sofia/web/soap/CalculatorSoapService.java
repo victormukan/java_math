@@ -1,13 +1,13 @@
 package com.sofia.web.soap;
 
 import com.sofia.entity.HistoryRecord;
-import com.sofia.model.MathOperation;
+import com.sofia.dto.MathOperation;
 
 import javax.jws.WebService;
 import java.util.List;
 
 @WebService
-interface CalculatorService {
+interface CalculatorSoapService {
     Double doOperation(MathOperation mathOperation);
 
     List<HistoryRecord> getHistory();

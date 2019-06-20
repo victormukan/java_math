@@ -1,4 +1,4 @@
-package com.sofia.util.exception;
+package com.sofia.dto;
 
 public class ErrorResponse {
     private String error;
