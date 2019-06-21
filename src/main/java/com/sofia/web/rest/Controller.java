@@ -18,7 +18,6 @@ import java.util.List;
 @RestController
 @RequestMapping({"/api"})
 public class Controller {
-
     private static final Gson converter = Converter.getConverter();
 
     @Autowired
@@ -26,7 +25,6 @@ public class Controller {
 
     @Autowired
     private CalculatorService calculator;
-
 
     @GetMapping(path="/history", produces=MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody ResponseEntity<String> getHistory(@RequestParam(required = false) String limit) {
